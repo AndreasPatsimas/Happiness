@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
         	userDto = conversionService.convert(user,UserDto.class);
 
-            //log.info("Fetching Advertising data process completed");
+            // log.info("Fetching Advertising data process completed");
         }
         else {
             throw new RuntimeException("There is not a user with id: "+userId);
