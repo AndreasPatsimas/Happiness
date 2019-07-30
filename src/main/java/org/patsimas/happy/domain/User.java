@@ -2,9 +2,12 @@ package org.patsimas.happy.domain;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import org.patsimas.happy.domain.Role;
 
 @Entity
 @Table(name = "users")
@@ -44,6 +47,13 @@ public class User {
     @NotNull
     @Column(name = "last_name")
     private String lastName;
+    
+    @NotNull
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name = "users_roles", joinColumns = 
+	@JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id")
+	)
+	private List<Role> roles;
 
 	public User() {
 		super();
@@ -51,7 +61,7 @@ public class User {
 
 	public User(Long userId, @NotNull String username, @NotNull String password, @NotNull String email,
 			Date dateOfBirth, @NotNull Timestamp registrationDate, byte[] picture, @NotNull String firstName,
-			@NotNull String lastName) {
+			@NotNull String lastName, @NotNull List<Role> roles) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -62,6 +72,7 @@ public class User {
 		this.picture = picture;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.roles = roles;
 	}
 
 	public Long getUserId() {
@@ -136,13 +147,19 @@ public class User {
 		this.lastName = lastName;
 	}
 
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", email=" + email + ", dateOfBirth=" + dateOfBirth
+		return "User [username=" + username + ", email=" + email + ", dateOfBirth=" + dateOfBirth
 				+ ", registrationDate=" + registrationDate + ", firstName=" + firstName + ", lastName=" + lastName
-				+ "]";
-	}
-    
-    
+				+ ", roles=" + roles + "]";
+	} 
 	
 }

@@ -3,6 +3,9 @@ package org.patsimas.happy.dto;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
+
+import org.patsimas.happy.domain.Role;
 
 public class UserDto {
 
@@ -24,6 +27,8 @@ public class UserDto {
     
     private String lastName;
     
+    private List<Role> roles;
+    
 
 	public UserDto() {
 		super();
@@ -32,7 +37,7 @@ public class UserDto {
 	
 
 	public UserDto(Long userId, String username, String password, String email, Date dateOfBirth,
-			Timestamp registrationDate, byte[] picture, String firstName, String lastName) {
+			Timestamp registrationDate, byte[] picture, String firstName, String lastName, List<Role> roles) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -43,6 +48,7 @@ public class UserDto {
 		this.picture = picture;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.roles = roles;
 	}
 
 
@@ -119,11 +125,21 @@ public class UserDto {
 		this.lastName = lastName;
 	}
 
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "UserDto [userId=" + userId + ", username=" + username + ", email=" + email + ", dateOfBirth="
-				+ dateOfBirth + ", registrationDate=" + registrationDate + ", firstName=" + firstName + ", lastName="
-				+ lastName + "]";
+		return "UserDto [username=" + username + ", email=" + email + ", dateOfBirth=" + dateOfBirth
+				+ ", registrationDate=" + registrationDate + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", roles=" + roles + "]";
 	}
-	
+
 }

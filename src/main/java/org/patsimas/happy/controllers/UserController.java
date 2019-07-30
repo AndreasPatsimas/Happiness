@@ -15,22 +15,22 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	  @GetMapping(value = "users")
-	    public List<UserDto> getAllUsers(){
+	@GetMapping(value = "users")
+    public List<UserDto> getAllUsers(){
 
-	        //log.info("Fetch all Users");
+        //log.info("Fetch all Users");
 
-	        return userService.findAll();
-	    }
+        return userService.findAll();
+    }
 
-	    @GetMapping(value = "user/{userId}")
-	    public UserDto getUserById(@PathVariable("userId") Long userId) {
+    @GetMapping(value = "user/{userId}")
+    public UserDto getUserById(@PathVariable("userId") Long userId) {
 
-	       // log.info("Fetch data for user with id: {} ", userId);
+       // log.info("Fetch data for user with id: {} ", userId);
 
-	        UserDto userDto = userService.findById(userId);
+        UserDto userDto = userService.findById(userId);
 
-	        return userDto;
-	    }
+        return userDto;
+    }
 	
 }

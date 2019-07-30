@@ -44,21 +44,23 @@ INSERT INTO `happiness` VALUES (1,'Superb',NULL,'95-100'),(2,'Very good',NULL,'8
 UNLOCK TABLES;
 
 --
--- Table structure for table `profile`
+-- Table structure for table `profiles`
 --
 
-DROP TABLE IF EXISTS `profile`;
+DROP TABLE IF EXISTS `profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `profile` (
+CREATE TABLE `profiles` (
+  `id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `task_id` int(10) unsigned NOT NULL,
   `happiness_id` int(10) unsigned NOT NULL,
   `month` int(11) DEFAULT NULL,
   `year` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`),
+  PRIMARY KEY (`id`),
   KEY `fktid_idx` (`task_id`),
   KEY `fkhid_idx` (`happiness_id`),
+  KEY `fkuserid_idx` (`user_id`),
   CONSTRAINT `fkhid` FOREIGN KEY (`happiness_id`) REFERENCES `happiness` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fktid` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fkuid` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -66,12 +68,13 @@ CREATE TABLE `profile` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profile`
+-- Dumping data for table `profiles`
 --
 
-LOCK TABLES `profile` WRITE;
-/*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profile` ENABLE KEYS */;
+LOCK TABLES `profiles` WRITE;
+/*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
+INSERT INTO `profiles` VALUES (1,1,1,1,5,2019),(2,1,1,2,6,2019),(3,2,3,4,6,2019),(4,2,1,6,7,2019);
+/*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -111,7 +114,7 @@ CREATE TABLE `tasks` (
   `pic` longblob,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`task_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +123,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (1,'fd',NULL);
+INSERT INTO `tasks` VALUES (1,'football',NULL),(2,'basketball',NULL),(3,'food',NULL);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +147,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +156,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'f','g','eg',NULL,'2019-07-29 07:10:00',NULL,'gwe','wf'),(2,'ger','jy','jtr',NULL,'2019-07-29 07:10:00',NULL,'luy','erw');
+INSERT INTO `users` VALUES (1,'andreas','andreas','eg',NULL,'2019-07-29 07:10:00',NULL,'gwe','wf'),(2,'sotiris','sotiris','jtr',NULL,'2019-07-29 07:10:00',NULL,'luy','erw');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,6 +183,7 @@ CREATE TABLE `users_roles` (
 
 LOCK TABLES `users_roles` WRITE;
 /*!40000 ALTER TABLE `users_roles` DISABLE KEYS */;
+INSERT INTO `users_roles` VALUES (1,1),(1,2),(2,2);
 /*!40000 ALTER TABLE `users_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-29 17:15:53
+-- Dump completed on 2019-07-30 16:06:26

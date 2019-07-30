@@ -13,7 +13,7 @@ public class UserToUserDtoConverter implements Converter<User ,UserDto > {
 		
 		UserDto userDto = new UserDto(user.getUserId(), user.getUsername(), user.getPassword(), user.getEmail() ,
 				user.getDateOfBirth(), user.getRegistrationDate(), user.getPicture(), user.getFirstName(), 
-				user.getLastName());
+				user.getLastName(), user.getRoles());
 				
 		return userDto;
 	}
