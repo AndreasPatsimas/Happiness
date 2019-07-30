@@ -1,4 +1,4 @@
-package org.patsimas.happy.controllers;
+package org.patsimas.happy.controllers.rest;
 
 import java.util.List;
 
