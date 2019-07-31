@@ -1,6 +1,7 @@
 package org.patsimas.happy.controllers.rest;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.patsimas.happy.dto.TaskDto;
 import org.patsimas.happy.services.TaskService;
@@ -12,13 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TaskController {
 	
+	private static final Logger LOGGER = Logger.getLogger(TaskController.class.getName());
+	
 	@Autowired
 	TaskService taskService;
 	
 	@GetMapping(value = "tasks")
     public List<TaskDto> getAllTasks(){
 
-        //log.info("Fetch all tasks");
+		LOGGER.info("Fetch all tasks");
 
         return taskService.findAll();
     }
@@ -26,7 +29,7 @@ public class TaskController {
     @GetMapping(value = "task/{taskId}")
     public TaskDto getTaskById(@PathVariable("taskId") Long taskId) {
 
-       // log.info("Fetch data for task with id: {} ", userId);
+    	LOGGER.info("Fetch data for task with id: " + taskId);
 
     	TaskDto taskDto = taskService.findById(taskId);
 
@@ -36,7 +39,7 @@ public class TaskController {
     @GetMapping(value = "tasks/{taskName}")
     public List<TaskDto> getTasksByName(@PathVariable("taskName") String taskName){
 
-        //log.info("Fetch tasks");
+        LOGGER.info("Fetch tasks");
 
         return taskService.findByTaskName(taskName);
     }

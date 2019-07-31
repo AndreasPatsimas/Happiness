@@ -3,6 +3,7 @@ package org.patsimas.happy.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import org.patsimas.happy.domain.User;
 import org.patsimas.happy.dto.UserDto;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+	private static final Logger LOGGER = Logger.getLogger(UserServiceImpl.class.getName());
+	
 	@Autowired
     private ConversionService conversionService;
 	
@@ -23,6 +26,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserDto> findAll() {
 		
+		LOGGER.info("Fetching data process for all users...");
+		
 		List<UserDto> userDtoList = new ArrayList<>();
 
         List<User> userList = userRepository.findAll();
@@ -30,6 +35,8 @@ public class UserServiceImpl implements UserService {
         for (User user : userList) {
             userDtoList.add(conversionService.convert(user, UserDto.class));
         }
+        
+        LOGGER.info("Fetching data process completed");
 		
 		return userDtoList;
 	}
@@ -37,6 +44,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDto findById(Long userId) {
 
+		LOGGER.info("Fetching data process for user with id: " + userId);
+		
 		Optional<User> result = userRepository.findById(userId);
 
 		User user = null;
@@ -48,7 +57,7 @@ public class UserServiceImpl implements UserService {
 
         	userDto = conversionService.convert(user,UserDto.class);
 
-            // log.info("Fetching  data process completed");
+        	LOGGER.info("Fetching data process completed");
         }
         else {
             throw new RuntimeException("There is not a user with id: "+userId);
