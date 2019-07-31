@@ -63,15 +63,25 @@ document.getElementById("button3").addEventListener("click", function(){
     if(this.status === 200){
 
       const users = JSON.parse(this.responseText);
-
+      
       users.forEach(function(user){
     	  
+    	  let roles = Array.from(user.roles);
+    	  
+    	  let rolesName = "";
+    	  
+    	  roles.forEach(function(role){
+    		 rolesName += role.name + " ,"; 
+    		 
+    	  });
+    	 var roleNamesWithoutCommaInTheEnd = rolesName.substring(0, rolesName.length - 1);
     	  output += `
               <ul>
                   <li>ID: ${user.userId}</li>
                   <li>USERNAME: ${user.username}</li>
                   <li>PASSWORD: ${user.password}</li>
                   <li>EMAIL: ${user.email}</li>
+                  <li>ROLE: ${roleNamesWithoutCommaInTheEnd}</li>
               </ul>`;
 
               document.getElementById("users").innerHTML = output;
