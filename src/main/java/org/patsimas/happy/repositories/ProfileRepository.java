@@ -12,5 +12,5 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
 	@Query(value = "SELECT * FROM check_happiness.profiles WHERE user_id = :userId", 
 			nativeQuery = true)
-	List<Profile> findProfileByUserId(Long userId);
+	List<Profile> findProfileByUserId(@Param("userId") Long userId);
 }
