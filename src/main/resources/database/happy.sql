@@ -112,6 +112,7 @@ CREATE TABLE `tasks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `task_name` varchar(200) NOT NULL,
   `pic` longblob,
+  `added` date NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`task_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -123,7 +124,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (1,'football',NULL),(2,'basketball',NULL),(3,'food',NULL);
+INSERT INTO `tasks` VALUES (1,'football',NULL,'2019-07-28'),(2,'basketball',NULL,'2019-07-29'),(3,'food',NULL,'2019-07-30');
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-30 16:06:26
+-- Dump completed on 2019-08-02 17:09:33
