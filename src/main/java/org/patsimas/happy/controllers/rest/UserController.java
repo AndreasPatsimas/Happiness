@@ -8,6 +8,9 @@ import org.patsimas.happy.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -35,5 +38,35 @@ public class UserController {
 
         return userDto;
     }
+    
+//    @PostMapping(value = "user")
+//	public UserDto saveUser (@RequestBody UserDto userDto) {
+//		
+//    	userDto.UserId(0);
+//		
+//    	userDto.setPassword(CryptoConverter.encrypt(userDto.getPassword()));
+//		
+//    	userDto.addRole(Role.EMPLOYEE);
+//		
+//    	userService.saveOrUpdateUserDto(userDto);
+//		
+//		return userDto;
+//	}
+	
+	@PutMapping(value = "user")
+	public UserDto editUser (@RequestBody UserDto userDto) {
+		
+		//userDto.setPassword(CryptoConverter.encrypt(userDto.getPassword()));
+		
+		UserDto existingDataUser = userService.findById(userDto.getUserId());
+		
+		userDto.setDateOfBirth(existingDataUser.getDateOfBirth());
+		
+		userDto.setRoles(existingDataUser.getRoles()); 
+		
+		userService.saveOrUpdateUserDto(userDto);
+		
+		return userDto;
+	}
 	
 }

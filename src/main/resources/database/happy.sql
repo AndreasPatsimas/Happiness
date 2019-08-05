@@ -141,7 +141,7 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `dob` date DEFAULT NULL,
-  `doc` timestamp NOT NULL,
+  `doc` date NOT NULL,
   `pic` longblob,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
@@ -157,7 +157,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'andreas','andreas','eg',NULL,'2019-07-29 07:10:00',NULL,'gwe','wf'),(2,'sotiris','sotiris','jtr',NULL,'2019-07-29 07:10:00',NULL,'luy','erw');
+INSERT INTO `users` VALUES (1,'andreas','areianara','andreas-patsim@hotmail.com','1993-02-16','2019-07-29',NULL,'Andreas','Patsimas'),(2,'sotiris','sotiris','jtr',NULL,'2019-07-29',NULL,'luy','erw');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-02 17:09:33
+-- Dump completed on 2019-08-05 16:44:59

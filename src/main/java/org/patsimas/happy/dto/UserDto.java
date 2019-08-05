@@ -2,6 +2,7 @@ package org.patsimas.happy.dto;
 
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class UserDto {
 	
 	private Date dateOfBirth;
 	
-	private Timestamp registrationDate;
+	private Date registrationDate;
 	
     private byte [] picture;
     
@@ -37,7 +38,7 @@ public class UserDto {
 	
 
 	public UserDto(Long userId, String username, String password, String email, Date dateOfBirth,
-			Timestamp registrationDate, byte[] picture, String firstName, String lastName, List<Role> roles) {
+			Date registrationDate, byte[] picture, String firstName, String lastName, List<Role> roles) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -93,11 +94,11 @@ public class UserDto {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Timestamp getRegistrationDate() {
+	public Date getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(Timestamp registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
@@ -137,9 +138,10 @@ public class UserDto {
 
 	@Override
 	public String toString() {
-		return "UserDto [username=" + username + ", email=" + email + ", dateOfBirth=" + dateOfBirth
-				+ ", registrationDate=" + registrationDate + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", roles=" + roles + "]";
+		return "UserDto [userId=" + userId + ", username=" + username + ", email=" + email + ", dateOfBirth="
+				+ dateOfBirth + ", registrationDate=" + registrationDate + ", picture=" + Arrays.toString(picture)
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", roles=" + roles + "]";
 	}
+
 
 }

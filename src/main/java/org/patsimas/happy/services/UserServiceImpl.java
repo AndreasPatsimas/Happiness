@@ -65,6 +65,19 @@ public class UserServiceImpl implements UserService {
 		
 		return userDto;
 	}
+
+	@Override
+	public void saveOrUpdateUserDto(UserDto userDto) {
+		
+		LOGGER.info("Saving data process for user: " + userDto.getUsername());
+		
+		User user = conversionService.convert(userDto, User.class);
+		
+		userRepository.save(user);
+		
+		LOGGER.info("Saving data process completed");
+		
+	}
 	
 
 }

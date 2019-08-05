@@ -35,7 +35,7 @@ public class User {
 	
 	@NotNull
     @Column(name = "doc")
-	private Timestamp registrationDate;
+	private Date registrationDate;
 	
     @Column(name = "pic")
     private byte [] picture;
@@ -60,7 +60,7 @@ public class User {
 	}
 
 	public User(Long userId, @NotNull String username, @NotNull String password, @NotNull String email,
-			Date dateOfBirth, @NotNull Timestamp registrationDate, byte[] picture, @NotNull String firstName,
+			Date dateOfBirth, @NotNull Date registrationDate, byte[] picture, @NotNull String firstName,
 			@NotNull String lastName, @NotNull List<Role> roles) {
 		super();
 		this.userId = userId;
@@ -115,11 +115,11 @@ public class User {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Timestamp getRegistrationDate() {
+	public Date getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(Timestamp registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 

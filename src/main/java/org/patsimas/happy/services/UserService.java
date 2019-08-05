@@ -10,4 +10,6 @@ public interface UserService {
 
     public UserDto findById(Long userId);
     
+    public void saveOrUpdateUserDto(UserDto userDto);
+    
 }
