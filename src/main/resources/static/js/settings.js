@@ -11,7 +11,7 @@ aSettings.addEventListener("click", function(){
 });
 
 const imgSettings = document.getElementById("imgSettings");
-imgSettings.setAttribute("src", localStorage.getItem("imageLink"));
+//imgSettings.setAttribute("src", localStorage.getItem("imageLink"));
 
 const http = new httpRequest();
 
@@ -55,10 +55,22 @@ const formToJSON = elements => [].reduce.call(elements, (data, element) => {
 
 const handleFormSubmit = event => {
 
-	  event.preventDefault();
-  
-	  const data = formToJSON(form.elements);
-	  if(data.password === data.password2){
+	document.getElementById("settingsButtons").style.display = "none";
+
+	document.getElementById('loading').style.display = 'block';
+
+	setTimeout(editProfile, 2000);
+
+	event.preventDefault();
+	
+	};
+
+const form = document.getElementById("registrationForm");
+form.addEventListener('submit', handleFormSubmit);
+
+function editProfile(){
+	const data = formToJSON(form.elements);
+	if(data.password === data.password2){
 		  
 		  http.put("http://localhost:8080/happy/user", data, 
 				   function(error,user){
@@ -68,19 +80,21 @@ const handleFormSubmit = event => {
 				         }
 				         else{
 				        	 user = JSON.parse(user);
-				        	 console.log(user);
+				        	 //console.log(user);
 				        	 location.reload();
 				         }
 				
-		 	});
-	  }
-	  else{
+			 });
+			 
+	}
+	else{
 		  document.getElementById("diffPassw").innerHTML = "Different verified password. Please correct it.";
 	  }
-	};
 
-const form = document.getElementById("registrationForm");
-form.addEventListener('submit', handleFormSubmit);
+	document.getElementById("settingsButtons").style.display = "block";
+
+	document.getElementById('loading').style.display = 'none';
+}
 
 
 

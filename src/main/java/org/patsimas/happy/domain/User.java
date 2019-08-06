@@ -1,6 +1,5 @@
 package org.patsimas.happy.domain;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +36,8 @@ public class User {
     @Column(name = "doc")
 	private Date registrationDate;
 	
-    @Column(name = "pic")
+	@Lob @Basic(fetch = FetchType.LAZY)
+	@Column(name = "pic", length=100000)
     private byte [] picture;
     
     @NotNull
@@ -58,6 +58,7 @@ public class User {
 	public User() {
 		super();
 	}
+	
 
 	public User(Long userId, @NotNull String username, @NotNull String password, @NotNull String email,
 			Date dateOfBirth, @NotNull Date registrationDate, byte[] picture, @NotNull String firstName,

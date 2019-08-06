@@ -1,5 +1,6 @@
 package org.patsimas.happy.services;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import org.patsimas.happy.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -76,6 +78,42 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user);
 		
 		LOGGER.info("Saving data process completed");
+		
+	}
+
+	@Override
+	public Blob getPictureByUserId(Long userId) {
+
+		LOGGER.info("Fetching photo for user with id: " + userId);
+		
+		Blob picture = userRepository.getPictureByUserId(userId);
+		
+		LOGGER.info("Fetching photo process completed");
+		
+		return picture;
+	}
+
+	@Override
+	public void saveUserPhotoByUserId(Long userId, MultipartFile photo) {
+
+		LOGGER.info("Saving photo for user with id: " + userId);
+		
+		try {
+		
+		byte[] photoBytes = photo.getBytes();
+		
+		if (photo.isEmpty()) {
+			photoBytes = null;
+		}
+		
+		userRepository.saveUserPhotoByUserId(userId, photoBytes);
+		
+		LOGGER.info("Saving photo process completed");
+		
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
