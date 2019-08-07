@@ -14,6 +14,15 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<!-- for button image delete profile -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- For modal -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 <title>My Profile</title>
 </head>
 
@@ -31,7 +40,7 @@
 					title="click here to change your photo"
 					class="img-circle img-responsive" id="img-profile"
 					src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
-				<form action="saveUserPhoto" method="POST" id="new_picture"
+				<form action="saveUserPhoto/1" method="POST" id="new_picture"
 					enctype="multipart/form-data">
 					<input type="file" name="photo" id="file" /> <label for="file"
 						class="btn-1">upload</label> <br>
@@ -46,7 +55,12 @@
 				<!--left col-->
 
 				<ul class="list-group">
-					<li class="list-group-item text-muted">Profile</li>
+					<li class="list-group-item text-right"><span
+						class="pull-left">Profile</span> <button class="btn btn-sm btn-danger" type="button"
+						data-toggle="modal"
+						data-target="#myModal"
+						title="Delete My Profile"
+						data-original-title="profile" ><i class="fa fa-remove"></i></button></li>
 					<li class="list-group-item text-right" id="doc"><span
 						class="pull-left"><strong>Joined</strong></span> 2.13.2014</li>
 					<li class="list-group-item text-right" id="lastLogin"><span
@@ -320,12 +334,36 @@
 		<!--/col-9-->
 	</div>
 	<!--/row-->
+
+		<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+	  
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">Delete my Profile</h4>
+			</div>
+			<div class="modal-body">
+			  <p>Be Careful! Do you really want to delete your Profile?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" id="deleteProfile" >Delete My Profile</button>
+				  <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+	  
+		</div>
+</div>
+
 	<script src="js/helper.js"></script>
 	<script src="js/ajaxCalls.js"></script>
 	<script src="js/home.js"></script>
 	<script src="js/notes.js"></script>
 	<script src="js/profile.js"></script>
 	<script src="js/settings.js"></script>
+
 
 
 </body>

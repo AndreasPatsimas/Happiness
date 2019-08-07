@@ -1,6 +1,5 @@
 package org.patsimas.happy.services;
 
-import java.sql.Blob;
 import java.util.List;
 
 import org.patsimas.happy.dto.UserDto;
@@ -15,5 +14,7 @@ public interface UserService {
     public void saveOrUpdateUserDto(UserDto userDto);
     
     public void saveUserPhotoByUserId(Long userId, MultipartFile photo);
+    
+    public void deleteUserById(Long userId);
     
 }

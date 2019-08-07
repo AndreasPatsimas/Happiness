@@ -104,6 +104,17 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}
+
+	@Override
+	public void deleteUserById(Long userId) {
+
+		LOGGER.info("Deleting user with id: " + userId);
+		
+		userRepository.deleteById(userId);
+		
+		LOGGER.info("Deleting user process completed");
+		
+	}
 	
 
 }

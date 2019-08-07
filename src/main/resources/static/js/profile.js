@@ -29,6 +29,23 @@ function(error, user){
         img.setAttribute("src", `image/${user.userId}`);
         // img.setAttribute("src", localStorage.getItem("imageLink"));
         //localStorage.setItem("imageLink", "andreas.jpg");
+        
+        document.getElementById("deleteProfile").addEventListener("click", function(){
+            
+            xhr.delete(`http://localhost:8080/happy/deleteUser/${user.userId}`, 
+            		function (error, user) {
+            	  if(error){
+            	    console.log(error);
+            	  }
+            	  else{
+            	    location.reload();
+            	    console.log(user);
+            	  }
+            	  
+        	});
+            
+        
+        });
     }
 });
 
@@ -56,6 +73,7 @@ document.getElementById("imageProfile").addEventListener("click", function(){
 	imageForm.style.display = "block";
 	
 });
+
 
 
 
