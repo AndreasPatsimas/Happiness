@@ -6,6 +6,9 @@ import java.util.logging.Logger;
 import org.patsimas.happy.dto.UserDto;
 import org.patsimas.happy.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +42,22 @@ public class UserController {
         return userDto;
     }
     
+    @GetMapping(value = "image/{userId}")
+    public ResponseEntity getImageByUserId(@PathVariable("userId") Long userId) {
+
+        LOGGER.info("Fetch data for user image with id: " + userId);
+
+        UserDto userDto = userService.findById(userId);
+        
+        if (userDto == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        LOGGER.info("Fetch image completed");
+        
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/*").body(userDto.getPicture());
+    }
+    
 //    @PostMapping(value = "user")
 //	public UserDto saveUser (@RequestBody UserDto userDto) {
 //		
@@ -59,6 +78,8 @@ public class UserController {
 		//userDto.setPassword(CryptoConverter.encrypt(userDto.getPassword()));
 		
 		UserDto existingDataUser = userService.findById(userDto.getUserId());
+		
+		userDto.setPicture(existingDataUser.getPicture());
 		
 		userDto.setDateOfBirth(existingDataUser.getDateOfBirth());
 		

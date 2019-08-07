@@ -82,18 +82,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Blob getPictureByUserId(Long userId) {
-
-		LOGGER.info("Fetching photo for user with id: " + userId);
-		
-		Blob picture = userRepository.getPictureByUserId(userId);
-		
-		LOGGER.info("Fetching photo process completed");
-		
-		return picture;
-	}
-
-	@Override
 	public void saveUserPhotoByUserId(Long userId, MultipartFile photo) {
 
 		LOGGER.info("Saving photo for user with id: " + userId);

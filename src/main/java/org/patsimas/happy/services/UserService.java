@@ -14,8 +14,6 @@ public interface UserService {
     
     public void saveOrUpdateUserDto(UserDto userDto);
     
-    public Blob getPictureByUserId(Long userId);
-    
     public void saveUserPhotoByUserId(Long userId, MultipartFile photo);
     
 }

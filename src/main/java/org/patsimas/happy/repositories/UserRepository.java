@@ -10,10 +10,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-
-	@Query(value = "SELECT pic FROM check_happiness.users  WHERE id = :userId", 
-			nativeQuery = true) 
-	Blob getPictureByUserId(@Param("userId")Long userId);
 	
 	@Transactional
     @Modifying

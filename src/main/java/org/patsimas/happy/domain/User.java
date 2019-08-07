@@ -36,7 +36,6 @@ public class User {
     @Column(name = "doc")
 	private Date registrationDate;
 	
-	@Lob @Basic(fetch = FetchType.LAZY)
 	@Column(name = "pic", length=100000)
     private byte [] picture;
     

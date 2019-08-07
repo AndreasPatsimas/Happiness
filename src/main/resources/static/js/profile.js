@@ -9,7 +9,7 @@ function(error, user){
     else{
 
         user = JSON.parse(user);
-        console.log(user.userId);
+        
         const username = document.getElementById("username").innerText = `${user.username}`; 
 
         let ddd = new Date(`${user.registrationDate}`);
@@ -22,8 +22,11 @@ function(error, user){
 
         const age = document.getElementById("age").innerHTML           = `<span class="pull-left"><strong>Age</strong></span> ${getAge(user.dateOfBirth)}`;
     
+        document.getElementById("new_picture").setAttribute("action", `saveUserPhoto/${user.userId}`);
+        
         const img = document.querySelector("#img-profile");
-        img.setAttribute("src", `getUserPhoto/${user.userId}`);
+        
+        img.setAttribute("src", `image/${user.userId}`);
         // img.setAttribute("src", localStorage.getItem("imageLink"));
         //localStorage.setItem("imageLink", "andreas.jpg");
     }
@@ -45,7 +48,7 @@ document.getElementById("prevYear").textContent = `General ${d.getFullYear() - 1
 document.getElementById("thisYear").textContent = `General ${d.getFullYear()}`;
 
 document.getElementById("imageProfile").addEventListener("click", function(){
-	console.log("yo");
+	
 	const divImageProfile = document.getElementById("divImageProfile");
 	
 	const imageForm = document.getElementById("new_picture");
