@@ -4,7 +4,7 @@ const liSettings       = document.querySelector("#settings"),
 
 aSettings.addEventListener("click", function(){
 
-    changeTab(liSettings, liHome, liNotes, divSettingsInfo, divHomeInfo, divNotesInfo);
+	changeTab(liSettings, liHome, liTasks, divSettingsInfo, divHomeInfo, divTasksInfo);
 
     document.getElementById("myActivitiesTabs").style.display = "none";
 

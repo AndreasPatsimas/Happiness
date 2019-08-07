@@ -23,6 +23,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
 <title>My Profile</title>
 </head>
 
@@ -40,11 +42,11 @@
 					title="click here to change your photo"
 					class="img-circle img-responsive" id="img-profile"
 					src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
-				<form action="saveUserPhoto/1" method="POST" id="new_picture"
+				<form action="saveUserPhoto" method="POST" id="new_picture"
 					enctype="multipart/form-data">
 					<input type="file" name="photo" id="file" /> <label for="file"
 						class="btn-1">upload</label> <br>
-					<button class="btn btn-lg btn-success" type="submit">
+					<button class=" btn-lg btn-success" type="submit">
 						<i class="glyphicon glyphicon-ok-sign"></i> Save
 					</button>
 				</form>
@@ -56,7 +58,7 @@
 
 				<ul class="list-group">
 					<li class="list-group-item text-right"><span
-						class="pull-left">Profile</span> <button class="btn btn-sm btn-danger" type="button"
+						class="pull-left">Profile</span> <button class=" btn-danger" type="button"
 						data-toggle="modal"
 						data-target="#myModal"
 						title="Delete My Profile"
@@ -98,7 +100,7 @@
 					<ul class="nav nav-tabs" id="myTab">
 						<li class="active" id="home"><a href="#home"
 							data-toggle="tab">Home</a></li>
-						<li id="notes"><a href="#notes" data-toggle="tab">Notes</a></li>
+						<li id="tasks"><a href="#tasks" data-toggle="tab">Tasks</a></li>
 						<li id="settings"><a href="#settings" data-toggle="tab">Settings</a></li>
 					</ul>
 
@@ -173,11 +175,11 @@
 
 					</div>
 					<!--/tab-pane-->
-					<div class="tab-pane" id="notesInfo">
+					<div class="tab-pane" id="tasksInfo">
 
 						<h2></h2>
 
-						<ul class="list-group">
+						<!-- <ul class="list-group">
 							<li class="list-group-item text-muted">Inbox</li>
 							<li class="list-group-item text-right"><a href="#"
 								class="pull-left">Here is your a link to the latest summary
@@ -204,7 +206,36 @@
 								class="pull-left">Swedish chef is assaortor. A lobortis
 									vitae, condimentum justo...</a> 2.11.2014</li>
 
-						</ul>
+						</ul> -->
+
+						
+							<div id="main" class="card">
+							  <div class="card-content">
+								<span class="card-title">Task List</span>
+								<div class="row">
+								  <form id="task-form">
+									<div class="input-field col s12">
+									  <input type="text" name="task" id="task" value="Walk the dog">
+									  <label for="task">New Task</label>
+									  <p style="color: red" id="validInput"></p>
+									</div>
+								</div>
+								<input type="submit" value="Add Task" class="btn">
+								</form>
+							  </div>
+							  <div class="card-action">
+								<h5 id="task-title">Tasks</h5>
+								<div class="input-field col s12">
+								  <input type="text" name="filter" id="filter">
+								  <label for="filter">Filter Tasks</label>
+								</div>
+								<ul class="collection">
+								  <script src = "js/retrieveTasks.js"></script>
+								</ul>
+								<a class="clear-tasks btn black" href="">Clear Tasks</a>
+							  </div>
+							</div>
+						  
 
 					</div>
 					<!--/tab-pane-->
@@ -308,10 +339,10 @@
 
 								<div class="col-xs-12" id="settingsButtons">
 									<br>
-									<button class="btn btn-lg btn-success" type="submit">
+									<button class=" btn-lg btn-success" type="submit">
 										<i class="glyphicon glyphicon-ok-sign"></i> Save
 									</button>
-									<button class="btn btn-lg" type="reset"
+									<button class=" btn-lg" type="reset"
 										onclick="getInitializedFields()">
 										<i class="glyphicon glyphicon-repeat"></i> Reset
 									</button>
@@ -360,7 +391,8 @@
 	<script src="js/helper.js"></script>
 	<script src="js/ajaxCalls.js"></script>
 	<script src="js/home.js"></script>
-	<script src="js/notes.js"></script>
+	<script src="js/tasks.js"></script>
+	<script src="js/tasks_operations.js"></script>
 	<script src="js/profile.js"></script>
 	<script src="js/settings.js"></script>
 

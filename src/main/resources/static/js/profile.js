@@ -27,8 +27,6 @@ function(error, user){
         const img = document.querySelector("#img-profile");
         
         img.setAttribute("src", `image/${user.userId}`);
-        // img.setAttribute("src", localStorage.getItem("imageLink"));
-        //localStorage.setItem("imageLink", "andreas.jpg");
         
         document.getElementById("deleteProfile").addEventListener("click", function(){
             
@@ -56,10 +54,7 @@ let d = new Date();
 
 let lastLogin = getBeautifulDate(d);
 
-localStorage.setItem("lastLogin", lastLogin);
-
-
-const lastLog = document.getElementById("lastLogin").innerHTML = '<span class="pull-left"><strong>Last seen</strong></span> '+ localStorage.getItem("lastLogin");
+const lastLog = document.getElementById("lastLogin").innerHTML = '<span class="pull-left"><strong>Last seen</strong></span> '+ lastLogin;
 
 document.getElementById("prevYear").textContent = `General ${d.getFullYear() - 1}`;
 document.getElementById("thisYear").textContent = `General ${d.getFullYear()}`;

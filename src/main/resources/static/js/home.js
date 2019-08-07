@@ -18,7 +18,7 @@ const liHome       = document.querySelector("#home"),
       
 aHome.addEventListener("click", function(){
 
-    changeTab(liHome, liNotes, liSettings, divHomeInfo, divNotesInfo, divSettingsInfo);
+	changeTab(liHome, liTasks, liSettings, divHomeInfo, divTasksInfo, divSettingsInfo);
     
     document.getElementById("myActivitiesTabs").style.display = "block";
 });
