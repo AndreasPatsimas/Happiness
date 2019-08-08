@@ -1,4 +1,4 @@
-package org.patsimas.happy.convert.task;
+package org.patsimas.happy.convert.activity;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

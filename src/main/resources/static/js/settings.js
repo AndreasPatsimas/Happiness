@@ -44,15 +44,6 @@ function getInitializedFields(){
 getInitializedFields();
 
 
-
-//Get values from form and convert them to json objects
-const formToJSON = elements => [].reduce.call(elements, (data, element) => {
-
-	  data[element.name] = element.value;
-	  return data;
-
-	}, {});
-
 const handleFormSubmit = event => {
 
 	document.getElementById("settingsButtons").style.display = "none";
@@ -69,6 +60,7 @@ const form = document.getElementById("registrationForm");
 form.addEventListener('submit', handleFormSubmit);
 
 function editProfile(){
+	// me th method formToJSON pairnw ta data ths formas se morfh json, einai apothikeumenh stous helpers
 	const data = formToJSON(form.elements);
 	if(data.password === data.password2){
 		  
