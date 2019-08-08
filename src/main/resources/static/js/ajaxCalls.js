@@ -57,7 +57,7 @@ httpRequest.prototype.delete = function(url, callback){
     this.http.onload = function(){
 
         if(self.http.status === 200){
-            callback(null,"USER DELETED");
+            callback(null,"DATA DELETED");
         }
         else{
             callback(`Error: ` + self.http.status);

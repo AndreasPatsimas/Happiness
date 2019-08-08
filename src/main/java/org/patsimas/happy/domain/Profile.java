@@ -1,6 +1,5 @@
 package org.patsimas.happy.domain;
 
-import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,8 +28,8 @@ public class Profile {
 	
 	@NotNull
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "task_id")
-    private Task task;
+    @JoinColumn(name = "activity_id")
+    private Activity activity;
 	
 	@NotNull
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -52,12 +51,12 @@ public class Profile {
 		this.user = user;
 	}
 
-	public Task getTask() {
-		return task;
+	public Activity getActivity() {
+		return activity;
 	}
 
-	public void setTask(Task task) {
-		this.task = task;
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 
 	public Happiness getHappiness() {
@@ -86,7 +85,7 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "Profile [user=" + user + ", task=" + task + ", happiness=" + happiness + ", month=" + month + ", year="
+		return "Profile [user=" + user + ", activity=" + activity + ", happiness=" + happiness + ", month=" + month + ", year="
 				+ year + "]";
 	}
 	

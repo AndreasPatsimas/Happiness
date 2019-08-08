@@ -11,7 +11,7 @@ public class ProfileToProfileDtoConverter implements Converter<Profile, ProfileD
 	@Override
 	public ProfileDto convert(Profile profile) {
 
-		ProfileDto profileDto = new ProfileDto(profile.getTask(), profile.getHappiness(), profile.getMonth(), 
+		ProfileDto profileDto = new ProfileDto(profile.getActivity(), profile.getHappiness(), profile.getMonth(), 
 				profile.getYear());
 		
 		return profileDto;

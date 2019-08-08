@@ -2,12 +2,12 @@ package org.patsimas.happy.dto;
 
 
 import org.patsimas.happy.domain.Happiness;
-import org.patsimas.happy.domain.Task;
+import org.patsimas.happy.domain.Activity;
 import org.patsimas.happy.enums.Month;
 
 public class ProfileDto {
 	
-	private Task task;
+	private Activity activity;
 	
     private Happiness happiness;
 
@@ -19,20 +19,20 @@ public class ProfileDto {
 		super();
 	}
 
-	public ProfileDto(Task task, Happiness happiness, Month month, Integer year) {
+	public ProfileDto(Activity activity, Happiness happiness, Month month, Integer year) {
 		super();
-		this.task = task;
+		this.activity = activity;
 		this.happiness = happiness;
 		this.month = month;
 		this.year = year;
 	}
 
-	public Task getTask() {
-		return task;
+	public Activity getActivity() {
+		return activity;
 	}
 
-	public void setTask(Task task) {
-		this.task = task;
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 
 	public Happiness getHappiness() {
@@ -61,7 +61,7 @@ public class ProfileDto {
 
 	@Override
 	public String toString() {
-		return "ProfileDto [task=" + task + ", happiness=" + happiness + ", month=" + month + ", year=" + year + "]";
+		return "ProfileDto [activity=" + activity + ", happiness=" + happiness + ", month=" + month + ", year=" + year + "]";
 	}
 
 }
