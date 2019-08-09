@@ -33,7 +33,7 @@ httpUser.get("http://localhost:8080/happy/user/1", function(error, user){
 	
 	    if(nameOfItem.trim() !== "" && nameOfItem.length <= 46){
 	        
-	        /*let li = document.createElement("li");
+	        let li = document.createElement("li");
 	
 	        li.setAttribute("class","collection-item");
 	        li.textContent = nameOfItem;
@@ -48,7 +48,7 @@ httpUser.get("http://localhost:8080/happy/user/1", function(error, user){
 	        img.setAttribute("class","fa fa-remove");
 	        link.appendChild(img);   
 	        
-	        ul.appendChild(li);*/
+	        ul.appendChild(li);
 	        
 	        const taskData = formToJSON(taskForm.elements);
 	        
@@ -68,7 +68,7 @@ httpUser.get("http://localhost:8080/happy/user/1", function(error, user){
 	        });
 	        
 	        taskInput.value = "";
-	        location.reload();
+
 	        
 	    }
 	    else{

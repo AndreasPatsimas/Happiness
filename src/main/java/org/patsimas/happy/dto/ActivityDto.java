@@ -9,9 +9,6 @@ public class ActivityDto {
 	
 
     private String activityName;
-	
-
-    private byte [] picture;
     
     private Date added;
 
@@ -19,11 +16,10 @@ public class ActivityDto {
 		super();
 	}
 
-	public ActivityDto(Long activityId, String activityName, byte[] picture, Date added) {
+	public ActivityDto(Long activityId, String activityName, Date added) {
 		super();
 		this.activityId = activityId;
 		this.activityName = activityName;
-		this.picture = picture;
 		this.added = added;
 	}
 
@@ -43,14 +39,6 @@ public class ActivityDto {
 		this.activityName = activityName;
 	}
 
-	public byte[] getPicture() {
-		return picture;
-	}
-
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
-	}
-
 	public Date getAdded() {
 		return added;
 	}
@@ -61,9 +49,9 @@ public class ActivityDto {
 
 	@Override
 	public String toString() {
-		return "ActivityDto [activityId=" + activityId + ", activityName=" + activityName + ", picture="
-				+ Arrays.toString(picture) + ", added=" + added + "]";
+		return "ActivityDto [activityId=" + activityId + ", activityName=" + activityName + ", added=" + added + "]";
 	}
+
 
 
 }

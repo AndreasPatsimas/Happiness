@@ -61,9 +61,6 @@ let lastLogin = getBeautifulDate(d);
 
 const lastLog = document.getElementById("lastLogin").innerHTML = '<span class="pull-left"><strong>Last seen</strong></span> '+ lastLogin;
 
-document.getElementById("prevYear").textContent = `General ${d.getFullYear() - 1}`;
-document.getElementById("thisYear").textContent = `General ${d.getFullYear()}`;
-
 document.getElementById("imageProfile").addEventListener("click", function(){
 	
 	const divImageProfile = document.getElementById("divImageProfile");

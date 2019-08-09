@@ -12,7 +12,7 @@ public class ProfileToProfileDtoConverter implements Converter<Profile, ProfileD
 	public ProfileDto convert(Profile profile) {
 
 		ProfileDto profileDto = new ProfileDto(profile.getActivity(), profile.getHappiness(), profile.getMonth(), 
-				profile.getYear());
+				profile.getYear(), profile.getRating());
 		
 		return profileDto;
 	}

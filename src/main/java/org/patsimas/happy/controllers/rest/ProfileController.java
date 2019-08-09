@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import org.patsimas.happy.dto.ProfileDto;
 import org.patsimas.happy.services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,13 +19,36 @@ public class ProfileController {
 	@Autowired
 	ProfileService profileService;
 	
-    @GetMapping(value = "profile/{userId}")
-    public List<ProfileDto> getTaskById(@PathVariable("userId") Long userId) {
+    @GetMapping(value = "currentProfile/{userId}")
+    public List<ProfileDto> getCurrentProfileByUserId(@PathVariable("userId") Long userId) {
+
+        LOGGER.info("Fetch data for profile with id: " + userId);
+    	
+        return profileService.findCurrentYearProfileByUserId(userId);
+    }
+    
+    @GetMapping(value = "previousProfile/{userId}")
+    public List<ProfileDto> getPreviousProfileByUserId(@PathVariable("userId") Long userId) {
 
         LOGGER.info("Fetch data for profile with id: " + userId);
 
-    	List<ProfileDto> profileDto = profileService.findProfileByUserId(userId);
+        return profileService.findPreviousYearProfileByUserId(userId);
+    }
+    
+    @GetMapping(value = "avgPreviousProfile/{userId}")
+    public Double getAvgRatingPreviousYearProfileByUserId(@PathVariable("userId")Long userId) {
+    	
+    	LOGGER.info("Calculate average rating in previous year of user with id: " + userId);
+    	
+    	return profileService.findAvgRatingPreviousYearProfileByUserId(userId);
+    }
+    
+    @DeleteMapping(value = "deleteProfilesBeforeTwoYears")
+    public void deleteUserById() {
 
-        return profileDto;
+        LOGGER.info("Begin deleting profiles");
+
+        profileService.deleteProfilesBeforeTwoYears();
+
     }
 }

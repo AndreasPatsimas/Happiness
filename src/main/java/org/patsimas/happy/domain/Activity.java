@@ -24,9 +24,6 @@ public class Activity {
     @Column(name = "activity_name")
     private String activityName;
 	
-	@Column(name = "pic")
-    private byte [] picture;
-	
 	@Column(name = "added")
 	private Date added;
 
@@ -35,11 +32,10 @@ public class Activity {
 	}
 
 
-	public Activity(Long activityId, @NotNull String activityName, byte[] picture, Date added) {
+	public Activity(Long activityId, @NotNull String activityName, Date added) {
 		super();
 		this.activityId = activityId;
 		this.activityName = activityName;
-		this.picture = picture;
 		this.added = added;
 	}
 
@@ -59,13 +55,6 @@ public class Activity {
 		this.activityName = activityName;
 	}
 
-	public byte[] getPicture() {
-		return picture;
-	}
-
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
-	}
 
 	public Date getAdded() {
 		return added;
@@ -78,8 +67,8 @@ public class Activity {
 
 	@Override
 	public String toString() {
-		return "Activity [activityId=" + activityId + ", activityName=" + activityName + ", picture="
-				+ Arrays.toString(picture) + ", added=" + added + "]";
+		return "Activity [activityId=" + activityId + ", activityName=" + activityName + ", added=" + added + "]";
 	}
+
 
 }

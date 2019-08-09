@@ -14,17 +14,20 @@ public class ProfileDto {
     private Month month;
 
     private Integer year;
+    
+    private Integer rating;
 
 	public ProfileDto() {
 		super();
 	}
 
-	public ProfileDto(Activity activity, Happiness happiness, Month month, Integer year) {
+	public ProfileDto(Activity activity, Happiness happiness, Month month, Integer year, Integer rating) {
 		super();
 		this.activity = activity;
 		this.happiness = happiness;
 		this.month = month;
 		this.year = year;
+		this.rating = rating;
 	}
 
 	public Activity getActivity() {
@@ -59,9 +62,20 @@ public class ProfileDto {
 		this.year = year;
 	}
 
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+
 	@Override
 	public String toString() {
-		return "ProfileDto [activity=" + activity + ", happiness=" + happiness + ", month=" + month + ", year=" + year + "]";
+		return "ProfileDto [activity=" + activity + ", happiness=" + happiness + ", month=" + month + ", year=" + year
+				+ ", rating=" + rating + "]";
 	}
+
+
 
 }

@@ -11,8 +11,8 @@ public class ActivityToActivityDtoConverter implements Converter<Activity ,Activ
 	@Override
 	public ActivityDto convert(Activity activity) {
 		
-		ActivityDto activityDto = new ActivityDto(activity.getActivityId(), activity.getActivityName(), 
-										activity.getPicture(), activity.getAdded());
+		ActivityDto activityDto = new ActivityDto(activity.getActivityId(), activity.getActivityName()
+									, activity.getAdded());
 		
 		return activityDto;
 	}

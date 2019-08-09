@@ -42,6 +42,17 @@ public class Profile {
 	@NotNull
 	@Column(name = "year")
     private Integer year;
+	
+	@Column(name = "rating")
+    private Integer rating;
+	
+	public Long getProfileId() {
+		return profileId;
+	}
+
+	public void setProfileId(Long profileId) {
+		this.profileId = profileId;
+	}
 
 	public User getUser() {
 		return user;
@@ -83,10 +94,18 @@ public class Profile {
 		this.year = year;
 	}
 
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
 	@Override
 	public String toString() {
-		return "Profile [user=" + user + ", activity=" + activity + ", happiness=" + happiness + ", month=" + month + ", year="
-				+ year + "]";
+		return "Profile [user=" + user + ", activity=" + activity + ", happiness=" + happiness + ", month=" + month
+				+ ", year=" + year + ", rating=" + rating + "]";
 	}
 	
 	
