@@ -20,8 +20,13 @@ function(error, user){
 
         const email = document.getElementById("email").innerHTML       = `<span class="pull-left"><strong>Email</strong></span> ${user.email}`;
 
-        const age = document.getElementById("age").innerHTML           = `<span class="pull-left"><strong>Age</strong></span> ${getAge(user.dateOfBirth)}`;
-    
+        if(user.dateOfBirth !=null){
+        	const age = document.getElementById("age").innerHTML       = `<span class="pull-left"><strong>Age</strong></span> ${getAge(user.dateOfBirth)}`;
+        }
+        else{
+        	document.getElementById("age").innerHTML                   = `<span class="pull-left"><strong>Age</strong></span> -`;
+        }
+        
         document.getElementById("new_picture").setAttribute("action", `saveUserPhoto/${user.userId}`);
         
         const img = document.querySelector("#img-profile");
