@@ -118,9 +118,56 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 																	    ${avgRatingPreviousYear}% </a>`;
 											
 					}
+					
+					httpHome.get(`http://localhost:8080/happy/previousProfile/${user.userId}`, (error,previousYearProfiles) => {
+						
+						if(error){
+							console.log(error);
+						}
+						else{
+							previousYearProfiles = JSON.parse(previousYearProfiles);
+							
+							const modal = document.getElementById("tablePrevYearModal");
+			                
+				            document.getElementById("analysisPreviousYear").addEventListener("click", () =>{
+				                
+				              modal.style.display = "block";
+				                
+				            });
+				              
+				            document.getElementById("closePrevModal").addEventListener("click", () => {modal.style.display = "none"});
+				                
+				            window.addEventListener("click", (e) => {
+				              if(e.target == modal){
+				                modal.style.display = "none";
+				              }
+				            });
+
+				            let content = ``;
+
+				            let date;
+
+				            for (let i = 0; i < previousYearProfiles.length; i++){
+				              
+				              date = new Date(previousYearProfiles[i].activity.added);
+
+				              date = getBeautifulDate(date);
+				              content +=      `<tr>
+				                                      <td>${i + 1}</td>
+				                                      <td>${previousYearProfiles[i].activity.activityName}</td>
+				                                      <td>${previousYearProfiles[i].happiness.description}</td>
+				                                      <td>${previousYearProfiles[i].rating}</td>
+				                                      <td>${date}</td>
+				                              </tr>`;
+				            }
+				 
+				            document.getElementById("prevProfiles").innerHTML = content;
+						}
+						
+					});
+					
 		});
-
-
+		
 	}
 });
 

@@ -16,20 +16,14 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 <!-- for button image delete profile -->
-<link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- For modal -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
 <title>My Profile</title>
 </head>
@@ -63,12 +57,12 @@
 				<!--left col-->
 
 				<ul class="list-group">
-					<li class="list-group-item text-right"><span class="pull-left">Profile</span>
-						<button class=" btn-danger" type="button" data-toggle="modal"
-							data-target="#myModal" title="Delete My Profile"
-							data-original-title="profile">
-							<i class="fa fa-remove"></i>
-						</button></li>
+					<li class="list-group-item text-right"><span
+						class="pull-left">Profile</span> <button class=" btn-danger" type="button"
+						data-toggle="modal"
+						data-target="#myModal"
+						title="Delete My Profile"
+						data-original-title="profile" ><i class="fa fa-remove"></i></button></li>
 					<li class="list-group-item text-right" id="doc"><span
 						class="pull-left"><strong>Joined</strong></span> 2.13.2014</li>
 					<li class="list-group-item text-right" id="lastLogin"><span
@@ -87,11 +81,10 @@
 				<ul class="list-group">
 					<li class="list-group-item text-muted">Happiness <i
 						class="fa fa-dashboard fa-1x"></i></li>
-					<li class="list-group-item text-right" id="avgPrev"><span
-						class="pull-left"><strong>General 2018</strong></span>
-						55%</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong>General
-								2019</strong></span> 85%</li>
+					<li class="list-group-item text-right" id = "avgPrev"><span class="pull-left"><strong
+							>General 2018</strong></span> 55%</li>
+					<li class="list-group-item text-right"><span class="pull-left"><strong
+							>General 2019</strong></span> 85%</li>
 					<!-- <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78
                     </li> -->
@@ -140,7 +133,8 @@
 									<tr>
 										<th>#</th>
 										<th>Activities / Relationships</th>
-										<th>Happines</th>
+										<th>Happiness</th>
+										<th>Rating</th>
 										<th>Added</th>
 										<!-- <th>Label </th>
                                         <th>Label </th>
@@ -153,15 +147,18 @@
 										<td>Table cell</td>
 										<td>Table cell</td>
 										<td>Table cell</td>
+										<td>Table cell</td>
 									</tr>
 									<tr>
 										<td>2</td>
 										<td>Table cell</td>
 										<td>Table cell</td>
 										<td>Table cell</td>
+										<td>Table cell</td>
 									</tr>
 									<tr>
 										<td>3</td>
+										<td>Table cell</td>
 										<td>Table cell</td>
 										<td>Table cell</td>
 										<td>Table cell</td>
@@ -215,35 +212,34 @@
 
 						</ul> -->
 
-
-						<div id="main" class="card">
-							<div class="card-content">
+						
+							<div id="main" class="card">
+							  <div class="card-content">
 								<span class="card-title">Task List</span>
 								<div class="row">
-									<form id="task-form">
-										<div class="input-field col s12">
-											<input type="text" name="taskName" id="task"
-												value="Walk the dog"> <label for="task">New
-												Task</label>
-											<p style="color: red" id="validInput"></p>
-										</div>
+								  <form id="task-form">
+									<div class="input-field col s12">
+									  <input type="text" name="task" id="task" value="Walk the dog">
+									  <label for="task">New Task</label>
+									  <p style="color: red" id="validInput"></p>
+									</div>
 								</div>
 								<input type="submit" value="Add Task" class="btn">
 								</form>
-							</div>
-							<div class="card-action">
+							  </div>
+							  <div class="card-action">
 								<h5 id="task-title">Tasks</h5>
 								<div class="input-field col s12">
-									<input type="text" name="filter" id="filter"> <label
-										for="filter">Filter Tasks</label>
+								  <input type="text" name="filter" id="filter">
+								  <label for="filter">Filter Tasks</label>
 								</div>
 								<ul class="collection">
-
+								  
 								</ul>
 								<a class="clear-tasks btn black" href="">Clear Tasks</a>
+							  </div>
 							</div>
-						</div>
-
+						  
 
 					</div>
 					<!--/tab-pane-->
@@ -374,28 +370,73 @@
 	</div>
 	<!--/row-->
 
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
+		<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Delete my Profile</h4>
-				</div>
-				<div class="modal-body">
-					<p>Be Careful! Do you really want to delete your Profile?</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" id="deleteProfile">Delete
-						My Profile</button>
-					<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-				</div>
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">Delete my Profile</h4>
 			</div>
-
+			<div class="modal-body">
+			  <p>Be Careful! Do you really want to delete your Profile?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" id="deleteProfile" >Delete My Profile</button>
+				  <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+	  
 		</div>
+</div>
+
+<!-- The Modal -->
+<div id="tablePrevYearModal" class="modal">
+
+	<!-- Modal content -->
+	<div class="modal-content">
+	  <span id="closePrevModal" class="close">&times;</span>
+	  <p style="text-align: center">Happiness of previous year</p>
 	</div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Activities / Relationships</th>
+				<th>Happiness</th>
+				<th>Rating</th>
+				<th>Added</th>
+			
+			</tr>
+		</thead>
+		<tbody id="prevProfiles">
+			<tr>
+				<td>1</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+				<td>Table cell</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
 
 	<script src="js/helper.js"></script>
 	<script src="js/ajaxCalls.js"></script>
