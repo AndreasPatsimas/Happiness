@@ -72,35 +72,83 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 		
 		
 		function changeMonthsTab(activeElement, inactiveElement) {
+
+			  if(activeElement != null){
+			                
+			        activeElement.setAttribute("class","active");
+
+			        if(inactiveElement != undefined){
+			          inactiveElement.removeAttribute("class");
+			        }
+			        
+			        fillhomeTable(activeElement);
+			  }  
+			}
+
+			function fillhomeTable(activeElement){
+			const homeTable = document.getElementById("items");
+
+			      httpHome.get(`http://localhost:8080/happy/currentProfile/${user.userId}`, (error, currentYearProfiles) => {
+
+			        if(error){
+			          console.log(error);
+			        }
+			        else{
+
+			          currentYearProfiles = JSON.parse(currentYearProfiles);
+
+			          var content = "";
+
+			          for(let i = 0; i < currentYearProfiles.length; i++){
+			            if(activeElement.id === "general"){
+
+			              document.getElementById("addActivity").innerHTML = "#";
+
+			                  content =      `<tr>
+			                                          <td>${1}</td>
+			                                          <td>${activeElement.id}</td>
+			                                          <td>${activeElement.id}</td>
+			                                          <td>${activeElement.id}</td>
+			                                          <td>${activeElement.id}</td>
+			                                  </tr>`;
+			            }
+			            else{
+
+			              const addActivity = document.getElementById("addActivity");
+
+			              //addActivity.id = `addAct/Rel${currentYearProfiles[i].month}`
+
+			              addActivity.innerHTML = `<a><i class="fa fa-plus-square" style="font-size:24px; color:black"></i></a>`;
+			                           
+			              if(currentYearProfiles[i].month === `${activeElement.id.toUpperCase()}`){
+			                
+			                addActivity.firstChild.setAttribute("id", `addAct/Rel/${currentYearProfiles[i].month}`);
+			                // console.log(addActivity.firstChild);
+			                addActivity.addEventListener("click", () => {
+			                  console.log(`${currentYearProfiles[i].month}`);
+			                });
+			                
+			                let date = new Date(currentYearProfiles[i].activity.added);
+
+			                content +=  `<tr>
+			                              <td></td>
+			                              <td>${currentYearProfiles[i].activity.activityName}</td>
+			                              <td>${currentYearProfiles[i].happiness.description}</td>
+			                              <td>${currentYearProfiles[i].rating}</td>
+			                              <td>${getBeautifulDate(date)}</td>
+			                           </tr>`;
+			              }
+			            }
+			          }
+			    
+			          homeTable.innerHTML = content;
+
+			        }
+			      })
+
+
+			}
 		
-		    if(activeElement != null){
-		                    
-		            activeElement.setAttribute("class","active");
-		
-		            inactiveElement.removeAttribute("class");
-		            
-		            fillhomeTable(activeElement);
-		    }  
-		}
-		
-		function fillhomeTable(activeElement){
-		    const homeTable = document.getElementById("items");
-		            
-		            var content = "";
-		
-		            for(let i = 1; i < 4; i++){
-		                    content +=      `<tr>
-		                                            <td>${i}</td>
-		                                            <td>${activeElement.id}</td>
-		                                            <td>${activeElement.id}</td>
-		                                            <td>${activeElement.id}</td>
-		                                    </tr>`;
-		            }
-		
-		            homeTable.innerHTML = content;
-		}
-		
-		fillhomeTable(general);
 
 		httpHome.get(`http://localhost:8080/happy/avgPreviousProfile/${user.userId}`, 
 				function(error,avgRatingPreviousYear){
