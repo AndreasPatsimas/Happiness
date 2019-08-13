@@ -14,8 +14,8 @@ public class Happiness {
 	
     public static final Happiness SUPERB      = new Happiness(1l, "Superb", 95, 100);
     public static final Happiness VERY_GOOD   = new Happiness(2l, "Very good", 85, 94);
-    public static final Happiness FAIRLY_GOOD = new Happiness(3l, "Fairly good", 75, 84);
-    public static final Happiness GOOD        = new Happiness(4l, "Good", 65, 74);
+    public static final Happiness GOOD = new Happiness(3l, "Good", 75, 84);
+    public static final Happiness FAIRLY_GOOD        = new Happiness(4l, "Fairly good", 65, 74);
     public static final Happiness FAIRLY_POOR = new Happiness(5l, "Fairly poor", 55, 64);
     public static final Happiness POOR        = new Happiness(6l, "Poor", 45, 54);
     public static final Happiness VERY_POOR   = new Happiness(7l, "Very poor", 35, 44);

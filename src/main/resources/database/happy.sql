@@ -39,7 +39,7 @@ CREATE TABLE `activities` (
 
 LOCK TABLES `activities` WRITE;
 /*!40000 ALTER TABLE `activities` DISABLE KEYS */;
-INSERT INTO `activities` VALUES (1,'football','2019-07-28'),(2,'basketball','2019-07-29'),(3,'food','2019-07-30'),(4,'Konna','2014-08-27'),(5,'volunteers','2012-01-17'),(6,'army','2018-01-16'),(7,'bootcamp','2018-10-12'),(8,'Aris','2006-09-17'),(9,'mom','1993-02-16'),(10,'dad','1993-02-16'),(11,'Chris','1993-02-16'),(12,'Sotiris','1997-05-08'),(13,'private lessons','2011-10-30');
+INSERT INTO `activities` VALUES (1,'football','2002-09-18'),(2,'basketball','2019-07-29'),(3,'food','2019-07-30'),(4,'Konna','2014-08-27'),(5,'volunteers','2012-01-17'),(6,'army','2018-01-16'),(7,'bootcamp','2018-10-12'),(8,'Aris','2006-09-17'),(9,'mom','1993-02-16'),(10,'dad','1993-02-16'),(11,'Chris','1993-02-16'),(12,'Sotiris','1997-05-08'),(13,'private lessons','2011-10-30');
 /*!40000 ALTER TABLE `activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `happiness` (
 
 LOCK TABLES `happiness` WRITE;
 /*!40000 ALTER TABLE `happiness` DISABLE KEYS */;
-INSERT INTO `happiness` VALUES (1,'Superb',NULL,95,100),(2,'Very good',NULL,85,94),(3,'Fairly Good',NULL,75,84),(4,'Good',NULL,65,74),(5,'Fairly poor',NULL,55,64),(6,'Poor',NULL,45,54),(7,'Very poor',NULL,35,44),(8,'Awful',NULL,0,34);
+INSERT INTO `happiness` VALUES (1,'Superb',NULL,95,100),(2,'Very good',NULL,85,94),(3,'Good',NULL,75,84),(4,'Fairly Good',NULL,65,74),(5,'Fairly poor',NULL,55,64),(6,'Poor',NULL,45,54),(7,'Very poor',NULL,35,44),(8,'Awful',NULL,0,34);
 /*!40000 ALTER TABLE `happiness` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +101,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (1,1,1,1,4,2019,95),(2,1,1,2,5,2019,87),(3,2,3,4,5,2019,65),(4,2,1,6,6,2019,50),(5,1,1,2,0,2019,86),(6,1,1,2,1,2019,87),(7,1,1,2,2,2019,88),(8,1,1,1,3,2019,96),(9,1,1,3,6,2019,75),(10,1,1,4,7,2019,74),(11,1,1,3,NULL,2018,60),(12,1,3,3,NULL,2018,80),(13,1,4,5,NULL,2018,63),(14,1,5,6,NULL,2018,52),(15,1,6,8,NULL,2018,30),(16,1,7,2,NULL,2018,87),(17,1,8,4,NULL,2018,70),(18,1,9,2,NULL,2018,85),(19,1,10,2,NULL,2018,85),(20,1,11,3,NULL,2018,80),(21,1,12,1,NULL,2018,95),(22,1,13,4,NULL,2018,68);
+INSERT INTO `profiles` VALUES (1,1,1,1,4,2019,95),(2,1,1,2,5,2019,87),(3,2,3,4,5,2019,65),(4,2,1,6,6,2019,50),(5,1,1,2,0,2019,86),(6,1,1,2,1,2019,87),(7,1,1,2,2,2019,88),(8,1,1,1,3,2019,96),(9,1,1,3,6,2019,75),(10,1,1,4,7,2019,74),(11,1,1,3,NULL,2018,60),(12,1,3,3,NULL,2018,80),(13,1,4,5,NULL,2018,63),(14,1,5,6,NULL,2018,52),(15,1,6,8,NULL,2018,30),(16,1,7,2,NULL,2018,87),(17,1,8,4,NULL,2018,70),(18,1,9,2,NULL,2018,85),(19,1,10,2,NULL,2018,85),(20,1,11,3,NULL,2018,80),(21,1,12,1,NULL,2018,95),(22,1,13,4,NULL,2018,68),(23,1,1,3,8,2019,80),(24,1,1,3,9,2019,80),(25,1,1,3,10,2019,80),(26,1,1,3,11,2019,80),(27,1,3,3,0,2019,80),(28,1,12,1,7,2019,96);
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-08-09 16:59:58
+-- Dump completed on 2019-08-13 16:59:01

@@ -49,6 +49,27 @@ function(error, user){
             
         
         });
+        
+        	
+        	httpHome.get(`http://localhost:8080/happy/avgCurrentProfile/${user.userId}`, (error, avgRatingCurrentYear) => {
+        		
+        		if(error){
+        			console.log(error);
+        		}
+        		else{
+        			
+        			let today = new Date();
+        			
+        			avgRatingCurrentYear = Math.round( avgRatingCurrentYear * 100) / 100;
+        			
+        			document.getElementById("avgCurr").innerHTML = `<span class="pull-left"><strong id="currYear">
+        														    General ${today.getFullYear()}</strong></span> 
+        														    ${ avgRatingCurrentYear}%`;
+        		}
+        		
+        	});
+
+        
     }
 });
 

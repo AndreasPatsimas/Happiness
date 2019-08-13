@@ -89,4 +89,40 @@ public class ProfileServiceImpl implements ProfileService {
 		return avgRating;
 	}
 
+	@Override
+	public List<Long> findSpecificUserActivities(Long userId) {
+		
+		LOGGER.info("Fetching activities data process for user with id: " + userId);
+		
+		List<Long> idsOfActivitiesOfUserList = profileRepository.findSpecificUserActivities(userId);
+		
+		LOGGER.info("Fetching data process completed");
+		
+		return idsOfActivitiesOfUserList;
+	}
+
+	@Override
+	public Double findAvgRatingPerActivityOfCurrentYearByUserId(Long userId, Long activityId) {
+
+		LOGGER.info("Calculating average rating of activity with id: " + activityId);
+		
+		Double avgRatingOfActivity = profileRepository.findAvgRatingPerActivityOfCurrentYearByUserId(userId, activityId);
+		
+		LOGGER.info("Calculating avg process completed");
+		
+		return avgRatingOfActivity;
+	}
+
+	@Override
+	public Double findAvgRatingCurrentYearProfileByUserId(Long userId) {
+		
+		LOGGER.info("Calculating average rating of current year... ");
+		
+		Double avgRating = profileRepository.findAvgRatingCurrentYearProfileByUserId(userId);
+		
+		LOGGER.info("Calculating avg process completed");
+		
+		return avgRating;
+	}
+
 }

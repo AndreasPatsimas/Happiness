@@ -12,7 +12,7 @@ public class ActivityToActivityDtoConverter implements Converter<Activity ,Activ
 	public ActivityDto convert(Activity activity) {
 		
 		ActivityDto activityDto = new ActivityDto(activity.getActivityId(), activity.getActivityName()
-									, activity.getAdded());
+									, activity.getAdded() ,null, null);
 		
 		return activityDto;
 	}

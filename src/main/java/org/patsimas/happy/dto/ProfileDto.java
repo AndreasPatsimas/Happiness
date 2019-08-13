@@ -7,6 +7,8 @@ import org.patsimas.happy.enums.Month;
 
 public class ProfileDto {
 	
+	private Long profileId; 
+	
 	private Activity activity;
 	
     private Happiness happiness;
@@ -21,14 +23,28 @@ public class ProfileDto {
 		super();
 	}
 
-	public ProfileDto(Activity activity, Happiness happiness, Month month, Integer year, Integer rating) {
+
+	public ProfileDto(Long profileId, Activity activity, Happiness happiness, Month month, Integer year,
+			Integer rating) {
 		super();
+		this.profileId = profileId;
 		this.activity = activity;
 		this.happiness = happiness;
 		this.month = month;
 		this.year = year;
 		this.rating = rating;
 	}
+
+
+	public Long getProfileId() {
+		return profileId;
+	}
+
+
+	public void setProfileId(Long profileId) {
+		this.profileId = profileId;
+	}
+
 
 	public Activity getActivity() {
 		return activity;

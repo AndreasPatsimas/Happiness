@@ -103,20 +103,42 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 			            if(activeElement.id === "general"){
 
 			              document.getElementById("addActivity").innerHTML = "#";
-
-			                  content =      `<tr>
-			                                          <td>${1}</td>
-			                                          <td>${activeElement.id}</td>
-			                                          <td>${activeElement.id}</td>
-			                                          <td>${activeElement.id}</td>
-			                                          <td>${activeElement.id}</td>
-			                                  </tr>`;
+     
+			              httpHome.get(`http://localhost:8080/happy/specificUserActivities/${user.userId}`, (error, activities) => {
+			            	 
+			            	  if(error){
+			            		  console.log(error);
+			            	  }
+			            	  else{
+			            		  
+			            		  activities = JSON.parse(activities);
+			            		  
+			            		  for(let j = 0; j < activities.length; j++){
+			            			  
+			            			  let date = new Date(activities[j].added);
+			            			  
+			            			  content += `<tr>
+					                                  <td>${j+1}</td>
+					                                  <td>${activities[j].activityName}</td>
+					                                  <td>${activities[j].happiness.description}</td>
+					                                  <td>${activities[j].avgRating}%</td>
+					                                  <td>${getBeautifulDate(date)}</td>
+				                                  </tr>`;
+			            			  
+			            		  }
+			            		  
+			            		  homeTable.innerHTML = content;
+			            
+			            	  }
+			              });
+			              
 			            }
 			            else{
 
 			              const addActivity = document.getElementById("addActivity");
 
-			              //addActivity.id = `addAct/Rel${currentYearProfiles[i].month}`
+			              // addActivity.id =
+							// `addAct/Rel${currentYearProfiles[i].month}`
 
 			              addActivity.innerHTML = `<a><i class="fa fa-plus-square" style="font-size:24px; color:black"></i></a>`;
 			                           
@@ -128,28 +150,29 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 			                  console.log(`${currentYearProfiles[i].month}`);
 			                });
 			                
-			                let date = new Date(currentYearProfiles[i].activity.added);
-
+			                let date = new Date(currentYearProfiles[i].activity.added);			                
+			                
 			                content +=  `<tr>
-			                              <td></td>
+			                              <td><a href="#" id="${currentYearProfiles[i].profileId}" ><i class="fa fa-remove" style = 'color: orange'></i></a></td>
 			                              <td>${currentYearProfiles[i].activity.activityName}</td>
 			                              <td>${currentYearProfiles[i].happiness.description}</td>
-			                              <td>${currentYearProfiles[i].rating}</td>
+			                              <td>${currentYearProfiles[i].rating}%</td>
 			                              <td>${getBeautifulDate(date)}</td>
 			                           </tr>`;
+			                
 			              }
 			            }
 			          }
 			    
 			          homeTable.innerHTML = content;
-
+			          console.log(document.getElementById("items"));
 			        }
 			      })
 
 
 			}
-		
-
+			
+			
 		httpHome.get(`http://localhost:8080/happy/avgPreviousProfile/${user.userId}`, 
 				function(error,avgRatingPreviousYear){
 					if(error){
@@ -204,7 +227,7 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 				                                      <td>${i + 1}</td>
 				                                      <td>${previousYearProfiles[i].activity.activityName}</td>
 				                                      <td>${previousYearProfiles[i].happiness.description}</td>
-				                                      <td>${previousYearProfiles[i].rating}</td>
+				                                      <td>${previousYearProfiles[i].rating}%</td>
 				                                      <td>${date}</td>
 				                              </tr>`;
 				            }
@@ -215,9 +238,12 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 					});
 					
 		});
+					
 		
 	}
 });
+
+
 
 
 

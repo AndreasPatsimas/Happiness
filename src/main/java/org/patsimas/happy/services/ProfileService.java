@@ -13,4 +13,10 @@ public interface ProfileService {
 	 public void deleteProfilesBeforeTwoYears();
 	 
 	 public Double findAvgRatingPreviousYearProfileByUserId(Long userId);
+	 
+	 public List<Long> findSpecificUserActivities(Long userId);
+	 
+	 public Double findAvgRatingPerActivityOfCurrentYearByUserId(Long userId, Long activityId);
+	 
+	 public Double findAvgRatingCurrentYearProfileByUserId(Long userId);
 }

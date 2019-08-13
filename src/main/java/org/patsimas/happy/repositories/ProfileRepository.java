@@ -11,6 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
+	@Query(value = "SELECT distinct(activity_id) FROM check_happiness.profiles WHERE user_id = :userId and year = YEAR(CURDATE())", 
+			nativeQuery = true)
+	List<Long> findSpecificUserActivities(@Param("userId") Long userId);
+	
 	@Query(value = "SELECT * FROM check_happiness.profiles WHERE user_id = :userId and year = YEAR(CURDATE())  order by month", 
 			nativeQuery = true)
 	List<Profile> findCurrentYearProfileByUserId(@Param("userId") Long userId);
@@ -22,6 +26,16 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 	@Query(value = "SELECT avg(rating) FROM check_happiness.profiles WHERE user_id = :userId and year = YEAR(CURDATE()) - 1 ", 
 			nativeQuery = true)
 	Double findAvgRatingPreviousYearProfileByUserId(@Param("userId") Long userId);
+	
+	@Query(value = "SELECT avg(rating) FROM check_happiness.profiles WHERE user_id = :userId and year = YEAR(CURDATE()) ", 
+			nativeQuery = true)
+	Double findAvgRatingCurrentYearProfileByUserId(@Param("userId") Long userId);
+	
+	@Query(value = "SELECT avg(rating) FROM check_happiness.profiles WHERE user_id = :userId and year = YEAR(CURDATE()) and activity_id = :activityId ", 
+			nativeQuery = true)
+	Double findAvgRatingPerActivityOfCurrentYearByUserId(@Param("userId") Long userId, @Param("activityId") Long activityId);
+	
+	
 	
 	@Transactional
     @Modifying
