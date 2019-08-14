@@ -88,4 +88,13 @@ public class ProfileController {
         profileService.deleteProfilesBeforeTwoYears();
 
     }
+    
+    @DeleteMapping(value = "removeActivityOfUserForSpecificMonthByProfileId/{profileId}")
+    public void removeActivityOfUserForSpecificMonthByProfileId(@PathVariable("profileId") Long profileId) {
+    	
+    	LOGGER.info("Begin deleting activity of user");
+    	
+    	profileService.deleteActivityOfUserForSpecificMonthByProfileId(profileId);
+    }
+    
 }

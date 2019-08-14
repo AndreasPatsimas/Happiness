@@ -1,6 +1,5 @@
 package org.patsimas.happy.domain;
 
-import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Column;

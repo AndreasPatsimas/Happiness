@@ -19,4 +19,6 @@ public interface ProfileService {
 	 public Double findAvgRatingPerActivityOfCurrentYearByUserId(Long userId, Long activityId);
 	 
 	 public Double findAvgRatingCurrentYearProfileByUserId(Long userId);
+	 
+	 public void deleteActivityOfUserForSpecificMonthByProfileId(Long profileId);
 }

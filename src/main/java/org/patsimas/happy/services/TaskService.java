@@ -3,7 +3,6 @@ package org.patsimas.happy.services;
 import java.util.List;
 
 import org.patsimas.happy.dto.TaskDto;
-import org.springframework.data.repository.query.Param;
 
 public interface TaskService {
 

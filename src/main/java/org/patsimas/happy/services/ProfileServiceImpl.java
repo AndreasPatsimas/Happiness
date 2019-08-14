@@ -125,4 +125,15 @@ public class ProfileServiceImpl implements ProfileService {
 		return avgRating;
 	}
 
+	@Override
+	public void deleteActivityOfUserForSpecificMonthByProfileId(Long profileId) {
+		
+		LOGGER.info("Deleting activity of user for the chosen month... ");
+		
+		profileRepository.deleteById(profileId);
+		
+		LOGGER.info("Deleting activity process completed");
+		
+	}
+
 }

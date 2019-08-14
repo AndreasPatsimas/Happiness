@@ -117,11 +117,13 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 			            			  
 			            			  let date = new Date(activities[j].added);
 			            			  
+			            			  let avg  =  Math.round( activities[j].avgRating * 100) / 100;
+			            			  
 			            			  content += `<tr>
 					                                  <td>${j+1}</td>
 					                                  <td>${activities[j].activityName}</td>
 					                                  <td>${activities[j].happiness.description}</td>
-					                                  <td>${activities[j].avgRating}%</td>
+					                                  <td>${avg}%</td>
 					                                  <td>${getBeautifulDate(date)}</td>
 				                                  </tr>`;
 			            			  
@@ -135,25 +137,18 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 			            }
 			            else{
 
-			              const addActivity = document.getElementById("addActivity");
-
-			              // addActivity.id =
-							// `addAct/Rel${currentYearProfiles[i].month}`
-
-			              addActivity.innerHTML = `<a><i class="fa fa-plus-square" style="font-size:24px; color:black"></i></a>`;
+			              
 			                           
 			              if(currentYearProfiles[i].month === `${activeElement.id.toUpperCase()}`){
 			                
-			                addActivity.firstChild.setAttribute("id", `addAct/Rel/${currentYearProfiles[i].month}`);
-			                // console.log(addActivity.firstChild);
-			                addActivity.addEventListener("click", () => {
-			                  console.log(`${currentYearProfiles[i].month}`);
-			                });
+			            	  const addActivity = document.getElementById("addActivity");
+
+				              addActivity.innerHTML = `<a href = "#" id = "addAct/Rel/${currentYearProfiles[i].month}" class = "addAct"><i class="fa fa-plus-square" style="font-size:24px; color:black"></i></a>`;
 			                
 			                let date = new Date(currentYearProfiles[i].activity.added);			                
 			                
 			                content +=  `<tr>
-			                              <td><a href="#" id="${currentYearProfiles[i].profileId}" ><i class="fa fa-remove" style = 'color: orange'></i></a></td>
+			                              <td><a href="#" id="${currentYearProfiles[i].profileId}" class = "removeActivity" ><i class="fa fa-remove" style = 'color: orange'></i></a></td>
 			                              <td>${currentYearProfiles[i].activity.activityName}</td>
 			                              <td>${currentYearProfiles[i].happiness.description}</td>
 			                              <td>${currentYearProfiles[i].rating}%</td>
@@ -165,12 +160,62 @@ httpHome.get("http://localhost:8080/happy/user/1", function(error, user){
 			          }
 			    
 			          homeTable.innerHTML = content;
-			          console.log(document.getElementById("items"));
+			          
 			        }
-			      })
+			      });
 
 
 			}
+			
+		document.body.addEventListener("click",deleteActivity);
+
+		function deleteActivity(e){
+		  if(e.target.parentElement.classList.contains("removeActivity")){
+		    if(confirm("Are you sure ?")){
+		        
+		    	const activityId = e.target.parentElement.parentElement.parentElement.childNodes[1].childNodes[0].id;
+                
+		        httpHome.delete(`http://localhost:8080/happy/removeActivityOfUserForSpecificMonthByProfileId/${activityId}`
+		        		, (error, data) =>{
+		        			
+		        	if(error){
+		        		console.log(error);
+		        	}
+		        	else{
+		        		console.log(data);
+		        		
+		        		const activity = e.target.parentElement.parentElement.parentElement;
+				        
+				        activity.remove();
+		        	}
+		        });
+		    }
+		  }
+		}
+		
+		document.body.addEventListener("click",addActivity);
+		
+		function addActivity(e){
+		    if(e.target.parentElement.classList.contains("addAct")){
+		         
+		        const activity = e.target.parentElement.parentElement.parentElement.childNodes[1].childNodes[0];
+		              
+		        const month = activity.id.split("addAct/Rel/")[1];
+		        console.log(month);
+		        const modal = document.getElementById("addActivityModal");
+
+		        modal.style.display = "block";
+
+		        document.getElementById("closeActivityModal").addEventListener("click", () => {modal.style.display = "none"});
+		          
+		        window.addEventListener("click", (e) => {
+		          if(e.target == modal){
+		            modal.style.display = "none";
+		          }
+		        });
+		    }
+		  }
+		
 			
 			
 		httpHome.get(`http://localhost:8080/happy/avgPreviousProfile/${user.userId}`, 
