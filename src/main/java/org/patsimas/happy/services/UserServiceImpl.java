@@ -30,13 +30,11 @@ public class UserServiceImpl implements UserService {
 		
 		LOGGER.info("Fetching data process for all users...");
 		
-		List<UserDto> userDtoList = new ArrayList<>();
+		List<User> userList = userRepository.findAll();
+		
+		List<UserDto> userDtoList = new ArrayList<>(userList.size());
 
-        List<User> userList = userRepository.findAll();
-
-        for (User user : userList) {
-            userDtoList.add(conversionService.convert(user, UserDto.class));
-        }
+		userList.forEach(user -> userDtoList.add(conversionService.convert(user, UserDto.class)));
         
         LOGGER.info("Fetching data process completed");
 		
