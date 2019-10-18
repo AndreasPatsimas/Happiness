@@ -1,57 +1,66 @@
 package org.patsimas.happy.dto;
 
-
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import org.patsimas.happy.domain.Role;
+import org.patsimas.happy.utils.CsvBindByNameOrder;
 
+import com.opencsv.bean.CsvBindByName;
+
+@CsvBindByNameOrder({ "ID", "USERNAME", "PASSWORD", "EMAIL", "DATE OF BIRTH", "DATE OF REGISTRATION", "IMAGE",
+		"FIRSTNAME", "LASTNAME", "ROLES" })
 public class UserDto {
 
+	@CsvBindByName(column = "ID")
 	private Long userId;
 
-    private String username;
-	
-    private String password;
-	
-    private String email;
-	
+	@CsvBindByName(column = "USERNAME")
+	private String username;
+
+	@CsvBindByName(column = "PASSWORD")
+	private String password;
+
+	@CsvBindByName(column = "EMAIL")
+	private String email;
+
+	@CsvBindByName(column = "DATE OF BIRTH")
 	private Date dateOfBirth;
-	
+
+	@CsvBindByName(column = "DATE OF REGISTRATION")
 	private Date registrationDate;
-	
-    private byte [] picture;
-    
-    private String firstName;
-    
-    private String lastName;
-    
-    private List<Role> roles;
-    
+
+	@CsvBindByName(column = "IMAGE")
+	private byte[] picture;
+
+	@CsvBindByName(column = "FIRSTNAME")
+	private String firstName;
+
+	@CsvBindByName(column = "LASTNAME")
+	private String lastName;
+
+	@CsvBindByName(column = "ROLES")
+	private List<Role> roles;
 
 	public UserDto() {
 		super();
 	}
-	
-	
 
-	public UserDto(Long userId, String username, String password, String email, Date dateOfBirth,
-			Date registrationDate, byte[] picture, String firstName, String lastName, List<Role> roles) {
+	public UserDto(Long userId, String username, String password, String email, Date dateOfBirth, Date registrationDate,
+			byte[] picture, String firstName, String lastName, List<Role> roles) {
 		super();
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.dateOfBirth = dateOfBirth;
-		this.registrationDate = registrationDate; //new Timestamp(System.currentTimeMillis());;
+		this.registrationDate = registrationDate; // new Timestamp(System.currentTimeMillis());;
 		this.picture = picture;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.roles = roles;
 	}
-
-
 
 	public Long getUserId() {
 		return userId;
@@ -133,14 +142,11 @@ public class UserDto {
 		this.roles = roles;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "UserDto [userId=" + userId + ", username=" + username + ", email=" + email + ", dateOfBirth="
 				+ dateOfBirth + ", registrationDate=" + registrationDate + ", picture=" + Arrays.toString(picture)
 				+ ", firstName=" + firstName + ", lastName=" + lastName + ", roles=" + roles + "]";
 	}
-
 
 }

@@ -25,6 +25,7 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -114,6 +115,18 @@ public class UserControllerTest {
         this.mockMvc.perform(get("/image/{userId}",userToFindOrUpdate))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("image/*"));
+    }
+    
+    @Test
+    public void exportDynamicListDetails() throws Exception {
+        this.mockMvc.perform(get("/export"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("text/csv; charset=utf-8"));
+
+        System.out.println(this.mockMvc.perform(get("/export"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("text/csv; charset=utf-8")).andReturn().getResponse().getContentAsString());
     }
 
     @Test

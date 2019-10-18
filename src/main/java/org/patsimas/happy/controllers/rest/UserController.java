@@ -1,9 +1,13 @@
 package org.patsimas.happy.controllers.rest;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.patsimas.happy.dto.UserDto;
+import org.patsimas.happy.services.ExportService;
 import org.patsimas.happy.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +21,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+
 @RestController
 public class UserController {
 	
@@ -24,6 +31,9 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	ExportService exportService;
 
 	@GetMapping(value = "users")
     public List<UserDto> getAllUsers(){
@@ -57,6 +67,16 @@ public class UserController {
         LOGGER.info("Fetch image completed");
         
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/*").body(userDto.getPicture());
+    }
+    
+    @GetMapping(value = "/export", produces= "text/csv; charset=utf-8")
+    public void exportDynamicListDetails(HttpServletResponse response)
+            throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    	
+    	LOGGER.info("Export data for all users process begins.");
+    	
+    	exportService.exportUsersToCSV(response);
+
     }
     
 //    @PostMapping(value = "user")
