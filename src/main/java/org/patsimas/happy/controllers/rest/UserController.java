@@ -69,6 +69,7 @@ public class UserController {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/*").body(userDto.getPicture());
     }
     
+    //https://stackoverflow.com/questions/54931492/using-java-opencsv-4-5-tips
     @GetMapping(value = "/export", produces= "text/csv; charset=utf-8")
     public void exportDynamicListDetails(HttpServletResponse response)
             throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
